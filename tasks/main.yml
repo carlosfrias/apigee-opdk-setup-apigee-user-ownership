@@ -1,0 +1,17 @@
+---
+# tasks file for apigee-opdk-setup-apigee-user-ownership
+- name: Installation home stats
+  stat:
+    path: '{{ apigee_installation_home }}'
+  register: apigee_home_status
+
+- name: Setup permission for apigee installation home directory
+  file:
+    path: '{{ apigee_installation_home }}'
+    group: '{{ opdk_group_name }}'
+    owner: '{{ opdk_user_name }}'
+    mode: 0755
+    state: directory
+  when: not apigee_home_status.stat.exists
+
+
