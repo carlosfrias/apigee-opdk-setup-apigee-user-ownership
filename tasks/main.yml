@@ -6,6 +6,7 @@
   register: apigee_home_status
 
 - name: Setup permission for apigee installation home directory
+  become: yes
   file:
     path: '{{ apigee_home }}'
     group: '{{ opdk_group_name }}'
