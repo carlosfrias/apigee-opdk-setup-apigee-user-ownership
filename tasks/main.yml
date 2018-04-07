@@ -12,6 +12,7 @@
     group: '{{ opdk_group_name }}'
     owner: '{{ opdk_user_name }}'
     mode: 0755
+    recurse: yes
     state: directory
   when: not apigee_home_status.stat.exists
 
